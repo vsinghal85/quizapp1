@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @quiz.name %>
+</p>
+<p>
+  <td><%= link_to "Add a Question", :controller=>'questions',:action=>'new',:quiz_id=>@quiz.id  %><%= @quiz.id %><td>
+  <% @quiz.questions.all.each do |question| %>
+  <br><p>
+  <strong>Question  :</strong>
+  <%= question.text %>
+  <br>
+  <% question.options.each do |option| %>
+  <td><%= option.text %></td>
+  <br>
+  <% end %>
+   <td><%= link_to "Add an option", :controller=>'options',:action=>'new',:question_id=>question.id  %><td>
+  <% end %>
+
+
+  
+</p>
+
+<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+<%= link_to 'Back', quizzes_path %>
